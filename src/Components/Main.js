@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import axios from 'axios'
 import InputDisplay from './inputDisplay';
 import Builder from './Builder'
+import Saved from './Saved'
 
 
 class Main extends Component {
@@ -9,6 +10,7 @@ class Main extends Component {
         super();
         this.state = {
             inputs: [],
+            currentName: '',
             current: [],
             saved: []
         }
@@ -28,6 +30,20 @@ class Main extends Component {
             .catch(err => console.log(err))
     }
 
+    saveCombo = (combo) => {
+        const name = {...this.state.currentName}
+        combo.pop()
+        axios.post('/api/combos', {combo, name})
+            .then(res => {
+                this.setState({
+                    saved: res.data,
+                    currentName: '',
+                    current: []
+                })
+            })
+            .catch(err => console.log(err))
+    }
+
     addToCombo = (newInput) => {
         let copy = [...this.state.current]
         copy.push(newInput);
@@ -40,6 +56,17 @@ class Main extends Component {
         this.setState({ current: copy })
     }
 
+    clearDisplay = () => {
+        this.setState({
+            current: [],
+            currentName: ''
+        })
+    }
+
+    handleChange = (input) =>{
+        this.setState({currentName: input})
+    }
+
     render() {
 
         return (
@@ -48,7 +75,15 @@ class Main extends Component {
                     inputs={this.state.inputs} 
                     addToCombo={this.addToCombo}
                     />
-                <Builder current={this.state.current}/>
+                <Builder 
+                    current={this.state.current}
+                    currentName={this.state.currentName}
+                    clear={this.clearDisplay}
+                    change={this.handleChange}
+                    save={this.saveCombo}
+                    />
+                <Saved/>
+
             </div>
         )
     }
