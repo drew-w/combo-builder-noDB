@@ -18,5 +18,15 @@ module.exports = {
         saved.push(newCombo);
         id++;
         res.status(200).send(saved)
+    },
+    deleteCombo: (req, res) => {
+        const i = saved.findIndex(combo => combo.id === +req.params.id);
+        saved.splice(i, 1);
+        res.status(200).send(saved)
+    },
+    editCombo: (req, res) => {
+        const i = saved.findIndex(combo => combo.id === + req.params.id);
+        const editableCombo = saved[i]
+        res.status(200).send(editableCombo)
     }
 }

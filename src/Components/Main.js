@@ -31,9 +31,10 @@ class Main extends Component {
     }
 
     saveCombo = (combo) => {
-        const name = {...this.state.currentName}
+        const name = [...this.state.currentName].join('')
+        console.log(name)
         combo.pop()
-        axios.post('/api/combos', {combo, name})
+        axios.post('/api/combos', { combo, name })
             .then(res => {
                 this.setState({
                     saved: res.data,
@@ -47,13 +48,23 @@ class Main extends Component {
     addToCombo = (newInput) => {
         let copy = [...this.state.current]
         copy.push(newInput);
-        if (newInput.type === 'direction'){
+        if (newInput.type === 'direction') {
             copy.push(this.state.inputs[0])
         }
-        else if (newInput.type === 'button'){
+        else if (newInput.type === 'button') {
             copy.push(this.state.inputs[1])
         }
         this.setState({ current: copy })
+    }
+
+    editCombo = (id) => {
+        axios.put(`/api/combos/${id}`)
+            .then(res => {
+                this.setState({
+                    current: res.data
+                })
+            })
+            .catch(err => console.log(err))
     }
 
     clearDisplay = () => {
@@ -63,8 +74,8 @@ class Main extends Component {
         })
     }
 
-    handleChange = (input) =>{
-        this.setState({currentName: input})
+    handleChange = (input) => {
+        this.setState({ currentName: input })
     }
 
     render() {
@@ -72,17 +83,19 @@ class Main extends Component {
         return (
             <div className='Main'>
                 <InputDisplay
-                    inputs={this.state.inputs} 
+                    inputs={this.state.inputs}
                     addToCombo={this.addToCombo}
-                    />
-                <Builder 
+                />
+                <Builder
                     current={this.state.current}
                     currentName={this.state.currentName}
                     clear={this.clearDisplay}
                     change={this.handleChange}
                     save={this.saveCombo}
+                />
+                <Saved 
+                    editCombo={this.editCombo}
                     />
-                <Saved/>
 
             </div>
         )
