@@ -13,6 +13,10 @@ class Saved extends Component {
         this.getSaved();
     }
 
+    componentDidMount(){
+        this.getSaved();
+    }
+
     getSaved = () => {
         axios.get('/api/combos')
             .then(res => {
@@ -35,8 +39,13 @@ class Saved extends Component {
             return (
                 <div key={e.id}>
                     <h1>{e.name}</h1>
-                    <button className='displayButton' onClick={() => this.props.editCombo(e.id)}>Edit</button>
-                    <button className='displayButton' onClick={() => this.deleteCombo(e.id)}>X</button>
+                    {this.props.editing === 'false' ?
+                    <button className='savedButton' onClick={() => this.props.editCombo(e.id)}>Edit</button>
+                    :
+                    <div></div>
+
+            }
+                    <button className='savedButton' onClick={() => this.deleteCombo(e.id)}>X</button>
                 </div>
             )
         })

@@ -26,7 +26,12 @@ module.exports = {
     },
     editCombo: (req, res) => {
         const i = saved.findIndex(combo => combo.id === + req.params.id);
-        const editableCombo = saved[i]
-        res.status(200).send(editableCombo)
+        const {combo, name, id} = req.body
+        saved[i] = {
+            combo: combo,
+            id: id,
+            name: name
+        }
+        res.status(200).send(saved)
     }
 }

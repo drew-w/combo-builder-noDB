@@ -19,10 +19,20 @@ function Builder(props) {
                 {mappedInputs}
             </div>
             <div className='saveClearContainer'>
+                {props.editing === 'false' ? 
                 <button 
                     disabled={!props.currentName || !props.current}
                     className='displayButton' 
                     onClick={() => props.save(props.current)}>Save</button>
+                    :
+                    <button
+                        disabled={!props.currentName}
+                        className='displayButton'
+                        onClick={() => props.saveEdits(props.current)}
+                        >Save Edits</button>
+                    
+                    }
+
                 <button className='displayButton' onClick={props.clear}>Clear</button>
             </div>
         </div>

@@ -10,7 +10,7 @@ app.get('/api/inputs', ctrl.getInputs);
 app.get('/api/combos', ctrl.getSaved);
 app.post('/api/combos', ctrl.saveCombo);
 app.delete('/api/combos/:id', ctrl.deleteCombo);
-app.put('/api/combos/:id', ctrl.deleteCombo);
+app.put('/api/combos/:id', ctrl.editCombo);
 
 
 const port = 4000;

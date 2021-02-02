@@ -12,7 +12,9 @@ class Main extends Component {
             inputs: [],
             currentName: '',
             current: [],
-            saved: []
+            saved: [],
+            editing: 'false',
+            id: ''
         }
     }
 
@@ -32,8 +34,6 @@ class Main extends Component {
 
     saveCombo = (combo) => {
         const name = [...this.state.currentName].join('')
-        console.log(name)
-        combo.pop()
         axios.post('/api/combos', { combo, name })
             .then(res => {
                 this.setState({
@@ -58,13 +58,35 @@ class Main extends Component {
     }
 
     editCombo = (id) => {
-        axios.put(`/api/combos/${id}`)
+        const savedCopy = [...this.state.saved]
+        let index = savedCopy.findIndex(combo => combo.id === +id)
+        let editableCombo = savedCopy[index]
+        console.log('setting editing id to'+id)
+        this.clearDisplay();
+        this.setState({
+            current: editableCombo.combo,
+            currentName: editableCombo.name,
+            editing: 'true',
+            id: id
+        })
+    }
+
+    saveEdits = (combo) => {
+        const name = [...this.state.currentName].join('')
+        const {id} = this.state
+        console.log(`trying to put at ${id}`)
+        axios.put(`/api/combos/${id}`, {combo, name, id})
             .then(res => {
+                console.log(res.data)
                 this.setState({
-                    current: res.data
+                    currentName: '',
+                    current: [],
+                    id: '',
+                    editing: 'false'
                 })
             })
-            .catch(err => console.log(err))
+            .catch(err => console.log(err))  
+        this.clearDisplay()
     }
 
     clearDisplay = () => {
@@ -92,9 +114,12 @@ class Main extends Component {
                     clear={this.clearDisplay}
                     change={this.handleChange}
                     save={this.saveCombo}
+                    editing={this.state.editing}
+                    saveEdits={this.saveEdits}
                 />
                 <Saved 
                     editCombo={this.editCombo}
+                    editing={this.state.editing}
                     />
 
             </div>
