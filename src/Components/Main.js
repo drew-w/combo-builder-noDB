@@ -46,6 +46,7 @@ class Main extends Component {
         const name = [...this.state.currentName].join('')
         axios.post('/api/combos', { combo, name })
             .then(res => {
+                console.log(res.data)
                 this.setState({
                     saved: res.data,
                     currentName: '',
@@ -71,8 +72,10 @@ class Main extends Component {
         const savedCopy = [...this.state.saved]
         let index = savedCopy.findIndex(combo => combo.id === +id)
         let editableCombo = savedCopy[index]
-        console.log('setting editing id to'+id)
-        this.clearDisplay();
+        console.log(id)
+        console.log(editableCombo)
+        console.log('saved '+savedCopy)
+        console.log(index)
         this.setState({
             current: editableCombo.combo,
             currentName: editableCombo.name,
@@ -84,11 +87,11 @@ class Main extends Component {
     saveEdits = (combo) => {
         const name = [...this.state.currentName].join('')
         const {id} = this.state
-        console.log(`trying to put at ${id}`)
         axios.put(`/api/combos/${id}`, {combo, name, id})
             .then(res => {
-                console.log(res.data)
+
                 this.setState({
+                    saved: res.data,
                     currentName: '',
                     current: [],
                     id: '',
@@ -96,7 +99,6 @@ class Main extends Component {
                 })
             })
             .catch(err => console.log(err))  
-        this.clearDisplay()
     }
 
     clearDisplay = () => {
