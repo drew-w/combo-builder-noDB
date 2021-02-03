@@ -145,6 +145,14 @@ input{
     align-items: center;
 }
 
+.gameLogo{
+    height: 100px;
+}
+
+.gameLogo:hover{
+    cursor: pointer;
+}
+
 button:disabled,
 button[disabled]{
   border: 1px solid #999999;

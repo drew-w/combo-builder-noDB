@@ -14,27 +14,38 @@ class Main extends Component {
             current: [],
             saved: [],
             editing: 'false',
-            id: ''
+            id: '',
+
         }
     }
 
     componentDidMount() {
-        this.getInputs();
+        this.getInputs(this.props.selector);
         this.getSaved();
     }
 
     componentDidUpdate(){
+        // this.getInputs(this.props.selector);
         this.getSaved();
     }
 
     getInputs = () => {
-        axios.get('/api/inputs')
+        axios.get(`/api/inputs/`)
             .then(res => {
                 this.setState({
                     inputs: res.data
                 })
             })
             .catch(err => console.log(err))
+    }
+
+    updateInputs = (id) => {
+        axios.put(`/api/inputs/${id}`)
+            .then(res => {
+                this.setState({
+                    inputs: res.data
+                })
+            })
     }
 
     saveCombo = (combo) => {
@@ -113,6 +124,10 @@ class Main extends Component {
     }
 
     render() {
+        if(this.props.change === 'true'){
+            this.updateInputs(this.props.selector)
+            this.props.finishChange();
+        }
 
         return (
             <div className='Main'>

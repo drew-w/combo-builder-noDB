@@ -1,0 +1,98 @@
+[
+    {
+        "id": "1",
+        "type": "plus",
+        "name": "plus",
+        "image": "https://i.ibb.co/qgVKpTs/image.png"
+    },
+    {
+        "id": "2",
+        "type": "plus",
+        "name": "next",
+        "image": "https://i.ibb.co/yRDQVPF/output-onlinepngtools.png"
+    },
+    {
+        "id": "3",
+        "type": "direction",
+        "name": "1",
+        "image": "https://i.ibb.co/2c3PmYM/1.png"
+    },
+    {
+        "id": "4",
+        "type": "direction",
+        "name": "2",
+        "image": "https://i.ibb.co/cw8s9yd/2.png"
+    },
+    {
+        "id": "5",
+        "type": "direction",
+        "name": "3",
+        "image": "https://i.ibb.co/6Z4cM0F/3.png"
+    },
+    {
+        "id": "6",
+        "type": "direction",
+        "name": "4",
+        "image": "https://i.ibb.co/ZVThjyj/4.png"
+    },
+    {
+        "id": "7",
+        "type": "direction",
+        "name": "6",
+        "image": "https://i.ibb.co/Pcgtys4/6.png"
+    },
+    {
+        "id": "8",
+        "type": "direction",
+        "name": "qcf",
+        "image": "https://i.ibb.co/5xHG9T5/qcf.png"
+    },
+    {
+        "id": "9",
+        "type": "direction",
+        "name": "qcb",
+        "image": "https://i.ibb.co/jDHbRFz/qcb.png"
+    },
+    {
+        "id": "10",
+        "type": "direction",
+        "name": "dp",
+        "image": "https://i.ibb.co/1rh68R0/dp.png"
+    },
+    {
+        "id": "11",
+        "type": "direction",
+        "name": "hcb",
+        "image": "https://i.ibb.co/qmGn43t/hcb.png"
+    },
+    {
+        "id": "12",
+        "type": "direction",
+        "name": "hcf",
+        "image": "https://i.ibb.co/t8rzfgq/hcf.png"
+    },
+    {
+        "id": "13",
+        "type": "button",
+        "name": "a",
+        "image": "https://wiki.gbl.gg/images/7/7c/UNI.A.icon.png"
+    },
+    {
+        "id": "14",
+        "type": "button",
+        "name": "b",
+        "image": "https://wiki.gbl.gg/images/9/9d/UNI.B.icon.png"
+    },
+    {
+        "id": "15",
+        "type": "button",
+        "name": "c",
+        "image": "https://wiki.gbl.gg/images/9/90/UNI.C.icon.png"
+    },
+    {
+        "id": "16",
+        "type": "button",
+        "name": "d",
+        "image": "https://wiki.gbl.gg/images/d/da/UNI.D.icon.png"
+    }
+]

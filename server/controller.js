@@ -1,4 +1,6 @@
 const inputs = require('../inputs.json') 
+const inputsSF = require('../inputs-sf.json')
+const inputsUNI = require('../inputs-uni.json')
 const saved = [];
 
 let id = 1;
@@ -33,5 +35,16 @@ module.exports = {
             name: name
         }
         res.status(200).send(saved)
+    },
+    editInputs: (req, res) => {
+        if (req.params.id === 2){
+            res.status(200).send(inputsSF)
+        }
+        else if (req.params.id === 3){
+            res.status(200).send(inputsUNI)
+        }
+        else {
+            res.status(200).send(inputs)
+        }
     }
 }
