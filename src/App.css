@@ -119,14 +119,6 @@ input{
 	background-color:#0a4d4f;
 }
 
-.gameLogo{
-    height: 100px;
-}
-
-.gameLogo:hover{
-    cursor: pointer;
-}
-
 button:disabled,
 button[disabled]{
   border: 1px solid #999999;
