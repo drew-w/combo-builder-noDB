@@ -20,13 +20,7 @@ class Main extends Component {
     }
 
     componentDidMount() {
-        this.getInputs(this.props.selector);
-        this.getSaved();
-    }
-
-    componentDidUpdate(){
-        // this.getInputs(this.props.selector);
-        this.getSaved();
+        this.getInputs();
     }
 
     getInputs = () => {
@@ -59,13 +53,6 @@ class Main extends Component {
                 })
             })
             .catch(err => console.log(err))
-    }
-
-    getSaved = () => {
-        axios.get('/api/combos')
-            .then(res => {
-                this.setState({ saved: res.data })
-            })
     }
 
     addToCombo = (newInput) => {

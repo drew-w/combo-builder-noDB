@@ -13,7 +13,7 @@ class Saved extends Component {
         this.getSaved();
     }
 
-    componentDidMount() {
+    componentDidMount(){
         this.getSaved();
     }
 
@@ -37,16 +37,15 @@ class Saved extends Component {
     render() {
         let mappedSaved = this.state.savedCombos.map(e => {
             return (
-                <div key={e.id} className='savedContainer'>
+                <div key={e.id}>
                     <h1>{e.name}</h1>
-                    <div className='savedButtonBox'>
-                        {this.props.editing === 'false' ?
-                            <button className='savedButton' onClick={() => this.props.editCombo(e.id)}>Edit</button>
-                            :
-                            <button disabled={true} className='savedButton'>Edit</button>
-                        }
-                        <button className='savedButton' onClick={() => this.deleteCombo(e.id)}>Delete</button>
-                    </div>
+                    {this.props.editing === 'false' ?
+                    <button className='savedButton' onClick={() => this.props.editCombo(e.id)}>Edit</button>
+                    :
+                    <div></div>
+
+            }
+                    <button className='savedButton' onClick={() => this.deleteCombo(e.id)}>X</button>
                 </div>
             )
         })
