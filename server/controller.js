@@ -19,7 +19,6 @@ module.exports = {
         const newCombo = {id, name, combo}
         saved.push(newCombo);
         id++;
-        console.log('saved: '+saved)
         res.status(200).send(saved)
     },
     deleteCombo: (req, res) => {

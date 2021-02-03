@@ -1,7 +1,8 @@
 function Header(props){
     return(
         <header>
-            <div>
+            <h1>Build Your Combo!</h1>
+            {/* <div>
                 <img
                     className='gameLogo'
                     onClick={() => props.selector(2)}
@@ -22,7 +23,7 @@ function Header(props){
                     onClick={() => props.selector(3)}
                     alt='UNI' 
                     src='http://pqube.co.uk/under-night-in-birth/wp-content/uploads/2019/11/under-night-in-birth-logo.png'/>
-            </div>
+            </div> */}
         </header>
     )
 }
